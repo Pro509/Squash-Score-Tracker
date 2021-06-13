@@ -29,11 +29,12 @@ form.addEventListener('submit', function (el) {
         player1.button.textContent = `+1 ${player1Input}`;
         player2.button.textContent = `+1 ${player2Input}`;
         shutOverlay();
+        break;
     } else if (player1Input === '' && player2Input === '') {
         shutOverlay();
     }
     // shutOverlay()
-    alert('You didn\'t enter both player names');
+    alert('You didn\'t enter both player names!');
     // prevent page redirection and more, no default behaviour
 })
 
