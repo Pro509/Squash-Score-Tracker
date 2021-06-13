@@ -1,61 +1,82 @@
-const p1Display = document.querySelector('#p1Display');
-const p2Display = document.querySelector('#p2Display');
+const player1 = {
+    score: 0,
+    buttonDisp: document.querySelector('#p1ButtonDisp'),
+    button: document.querySelector('#p1Button'),
+    display: document.querySelector('#p1Display')
+}
+
+const player2 = {
+    score: 0,
+    buttonDisp: document.querySelector('#p2ButtonDisp'),
+    button: document.querySelector('#p2Button'),
+    display: document.querySelector('#p2Display')
+}
 
 const scoreSelector = document.querySelector('#toWin')
-const p1Button = document.querySelector('#p1Button');
-const p2Button = document.querySelector('#p2Button');
 const resetButton = document.querySelector('#reset');
 
-let p1Score = parseInt(p1Display.innerText);
-let p2Score = parseInt(p2Display.innerText);
-let winningScore = 5;
+// overlay elements
+const overlay = document.querySelector('.modal')
+const form = document.querySelector('.form')
+
+function shutOverlay() {
+    overlay.classList.remove('is-active');
+}
+
+form.addEventListener('submit', function(el) {
+    el.preventDefault();
+    const player1Input = form.elements.player1Name.value;
+    const player2Input = form.elements.player2Name.value;
+    player1.buttonDisp.innerText = player1Input;
+    player2.buttonDisp.textContent = player2Input;
+    shutOverlay();
+    // prevent page redirection and more, no default behaviour
+})
+
+// Tasking
+let winningScore = parseInt(scoreSelector.innerText);
 let isGameOver = false;
 
-scoreSelector.addEventListener('change', function(){
-    // alert(this.value);
-    winningScore = parseInt(this.value)
-    reset()
-})
-
-p1Button.addEventListener('click', function () {
+function updateScore(player, opponent) {
     if (!isGameOver) {
-        p1Score += 1;
-        if (p1Score == winningScore) {
+        player.score += 1;
+        if (player.score == winningScore) {
             isGameOver = true;
-            p1Display.classList.add('has-text-success');
-            p2Display.classList.add('has-text-danger');
-            p1Button.disabled = true;
-            p2Button.disabled = true;
+            player.display.classList.add('has-text-success');
+            opponent.display.classList.add('has-text-danger');
+            player.button.disabled = true;
+            opponent.button.disabled = true;
         }
-        p1Display.textContent = p1Score;
+        player.display.textContent = player.score
     }
-})
-
-p2Button.addEventListener('click', function () {
-    if (!isGameOver) {
-        p2Score += 1;
-        if (p2Score == winningScore) {
-            isGameOver = true;
-            p2Display.classList.add('has-text-success')
-            p1Display.classList.add('has-text-danger')
-            p1Button.disabled = true;
-            p2Button.disabled = true;
-        }
-        p2Display.textContent = p2Score;
-    }
-})
-// p2Button.addEventListener('click', addScore(p2Score))
-
-resetButton.addEventListener('click', reset)
+}
 
 function reset() {
     isGameOver = false;
-    p1Score = 0;
-    p2Score = 0;
-    p1Display.textContent = p1Score;
-    p2Display.textContent = p2Score;
-    p1Display.classList.remove('has-text-success', 'has-text-danger')
-    p2Display.classList.remove('has-text-success', 'has-text-danger')
-    p1Button.disabled = false;
-    p2Button.disabled = false;
+    for (let p of [player1, player2]){
+        p.score = 0;
+        p.display.textContent = p.score;
+        p.display.classList.remove('has-text-success', 'has-text-danger');
+        p.button.disabled = false;
+    }
 }
+
+// Event Listeners
+scoreSelector.addEventListener('change', function () {
+    // alert(this.value);
+    winningScore = parseInt(this.value);
+    reset();
+})
+
+player1.button.addEventListener('click', function () {
+    updateScore(player1, player2);
+})
+
+player2.button.addEventListener('click', function () {
+    updateScore(player2, player1);
+})
+
+resetButton.addEventListener('click', reset)
+
+
+
