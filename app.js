@@ -22,6 +22,7 @@ function shutOverlay() {
 }
 
 form.addEventListener('submit', function (el) {
+    // prevent page redirection and more, no default behaviour
     el.preventDefault();
     const player1Input = form.elements.player1Name.value;
     const player2Input = form.elements.player2Name.value;
@@ -29,13 +30,11 @@ form.addEventListener('submit', function (el) {
         player1.button.textContent = `+1 ${player1Input}`;
         player2.button.textContent = `+1 ${player2Input}`;
         shutOverlay();
-        break;
-    } else if (player1Input === '' && player2Input === '') {
+    } else {
+        alert('You didn\'t enter both player names!');
         shutOverlay();
     }
     // shutOverlay()
-    alert('You didn\'t enter both player names!');
-    // prevent page redirection and more, no default behaviour
 })
 
 // Tasking
