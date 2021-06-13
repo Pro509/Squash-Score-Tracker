@@ -21,13 +21,19 @@ function shutOverlay() {
     overlay.classList.remove('is-active');
 }
 
-form.addEventListener('submit', function(el) {
+form.addEventListener('submit', function (el) {
     el.preventDefault();
     const player1Input = form.elements.player1Name.value;
     const player2Input = form.elements.player2Name.value;
-    player1.button.textContent = `+1 ${player1Input}`;
-    player2.button.textContent = `+1 ${player2Input}`;
-    shutOverlay();
+    if (player1Input !== '' && player2Input !== '') {
+        player1.button.textContent = `+1 ${player1Input}`;
+        player2.button.textContent = `+1 ${player2Input}`;
+        shutOverlay();
+    } else if (player1Input === '' && player2Input === '') {
+        shutOverlay();
+    }
+    // shutOverlay()
+    alert('You didn\'t enter both player names');
     // prevent page redirection and more, no default behaviour
 })
 
@@ -44,14 +50,14 @@ function updateScore(player, opponent) {
             opponent.display.classList.add('has-text-danger');
             player.button.disabled = true;
             opponent.button.disabled = true;
-        } 
+        }
         player.display.textContent = player.score;
     }
 }
 
 function reset() {
     isGameOver = false;
-    for (let p of [player1, player2]){
+    for (let p of [player1, player2]) {
         p.score = 0;
         p.display.textContent = p.score;
         p.display.classList.remove('has-text-success', 'has-text-danger');
