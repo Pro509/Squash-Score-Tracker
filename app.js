@@ -46,8 +46,7 @@ function updateScore(player, opponent) {
             opponent.display.classList.add('has-text-danger');
             player.button.disabled = true;
             opponent.button.disabled = true;
-        }
-        player.display.textContent = player.score
+        } else player.display.textContent = player.score;
     }
 }
 
