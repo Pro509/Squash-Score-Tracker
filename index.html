@@ -17,7 +17,9 @@
         <div class="modal-background"></div>
         <div class="modal-content">
             <!-- Any other Bulma elements you want -->
+
             <form action="/page" class="form box">
+                <h1 class="is-size-5-touch is-size-3-tablet has-text-black has-text-centered">Enter Player Names</h1>
                 <div class="columns">
                     <div class="column">
                         <div class="field">
@@ -38,13 +40,15 @@
                     <div class="column">
                         <div class="field">
                             <div class="control">
-                                <button type="submit" class="button is-primary is-centered" id="submitNames">Enter</button>
+                                <button type="submit" class="button is-primary is-centered"
+                                    id="submitNames">Enter</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
+        <button class="modal-close is-large" aria-label="close"></button>
     </div>
     <section class="section"></section>
     <section class="section">
@@ -64,9 +68,15 @@
                         </header>
                         <div class="card-content">
                             <div class="content">
-                                <h1 class="title is-1"><span id="p1Display">0</span> to <span id="p2Display">0</span>
-                                </h1>
-                                <p class="subtitle">Use the buttons below to keep score</p>
+                                <div class="columns">
+                                    <div class="column is-half">
+                                        <h1 class="title is-1" id="scoreCount"><span id="p1Display">0</span> to <span
+                                                id="p2Display">0</span>
+                                        </h1>
+                                        <p class="subtitle">Use the buttons below to keep score</p>
+                                    </div>
+                                </div>
+
                                 <label class="label is-inline" for="toWin">Score to win</label>
                                 <div class="select is-rounded is-small">
                                     <select name="set-score" id="toWin">

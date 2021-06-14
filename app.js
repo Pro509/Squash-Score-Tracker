@@ -15,11 +15,14 @@ const resetButton = document.querySelector('#reset');
 
 // overlay elements
 const overlay = document.querySelector('.modal')
+const overlayClose = document.querySelector('.modal-close')
 const form = document.querySelector('.form')
 
 function shutOverlay() {
     overlay.classList.remove('is-active');
 }
+
+overlayClose.addEventListener('click', shutOverlay)
 
 form.addEventListener('submit', function (el) {
     // prevent page redirection and more, no default behaviour
