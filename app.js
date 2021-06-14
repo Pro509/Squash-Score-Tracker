@@ -40,9 +40,12 @@ form.addEventListener('submit', function (el) {
         player1.button.textContent = `+1 ${player1Input}`;
         player2.button.textContent = `+1 ${player2Input}`;
         shutOverlay();
+    } else if (player1Input === '' && player2Input === '')  {
+        player1.button.textContent = '+1 Player One';
+        player2.button.textContent = '+1 Player Two';
+        shutOverlay();
     } else {
         alert('You didn\'t enter both player names!');
-        shutOverlay();
     }
     // shutOverlay()
 })
