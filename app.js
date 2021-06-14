@@ -51,13 +51,13 @@ form.addEventListener('submit', function (el) {
 })
 
 // Tasking
-let winningScore = parseInt(scoreSelector.innerText);
+let winningScore = parseInt(scoreSelector.textContent);
 let isGameOver = false;
 
 function updateScore(player, opponent) {
     if (!isGameOver) {
         player.score += 1;
-        if (player.score == winningScore) {
+        if (player.score === winningScore) {
             isGameOver = true;
             player.display.classList.add('has-text-success');
             opponent.display.classList.add('has-text-danger');
