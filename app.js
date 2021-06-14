@@ -21,6 +21,8 @@ const form = document.querySelector('.form')
 
 function shutOverlay() {
     overlay.classList.remove('is-active');
+    form.elements.player1Name.value = '';
+    form.elements.player2Name.value = '';
 }
 
 function openOverlay() {
