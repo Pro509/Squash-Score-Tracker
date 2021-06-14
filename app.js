@@ -10,6 +10,7 @@ const player2 = {
     display: document.querySelector('#p2Display')
 }
 
+const changePlayers = document.querySelector('#changePlayers')
 const scoreSelector = document.querySelector('#toWin')
 const resetButton = document.querySelector('#reset');
 
@@ -20,6 +21,10 @@ const form = document.querySelector('.form')
 
 function shutOverlay() {
     overlay.classList.remove('is-active');
+}
+
+function openOverlay() {
+    overlay.classList.add('is-active');
 }
 
 overlayClose.addEventListener('click', shutOverlay)
@@ -69,6 +74,8 @@ function reset() {
 }
 
 // Event Listeners
+changePlayers.addEventListener('click', openOverlay);
+
 scoreSelector.addEventListener('change', function () {
     // alert(this.value);
     winningScore = parseInt(this.value);
