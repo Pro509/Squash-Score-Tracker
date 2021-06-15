@@ -39,10 +39,12 @@ form.addEventListener('submit', function (el) {
     if (player1Input !== '' && player2Input !== '') {
         player1.button.textContent = `+1 ${player1Input}`;
         player2.button.textContent = `+1 ${player2Input}`;
+        reset();
         shutOverlay();
     } else if (player1Input === '' && player2Input === '')  {
         player1.button.textContent = '+1 Player One';
         player2.button.textContent = '+1 Player Two';
+        reset()
         shutOverlay();
     } else {
         alert('You didn\'t enter both player names!');
@@ -91,8 +93,18 @@ player1.button.addEventListener('click', function () {
     updateScore(player1, player2);
 })
 
+// removes double click zoom
+player1.button.addEventListener('dblclick', function(e){
+    e.preventDefault();
+})
+
 player2.button.addEventListener('click', function () {
     updateScore(player2, player1);
+})
+
+// removes double click zoom
+player2.button.addEventListener('dblclick', function(e){
+    e.preventDefault();
 })
 
 resetButton.addEventListener('click', reset)
