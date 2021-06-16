@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="modal is-active">
+    <div class="modal">
         <div class="modal-background"></div>
         <div class="modal-content">
             <!-- Any other Bulma elements you want -->
@@ -59,7 +59,7 @@
                 <div class="column is-half is-offset-one-quarter">
                     <div class="card">
                         <header class="card-header">
-                            <p class="card-header-title">
+                            <p class="card-header-title is-size-4">
                                 Squash Score Tracker
                             </p>
                             <div class="card-header-icon">
@@ -111,13 +111,37 @@
                 </div>
             </div>
         </div>
+
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half is-offset-one-quarter">
+                    <div class="box is-half is-offset-one-quarter">
+                        <div class="content">
+                            <H1 class="is-size-5">Game History</H1>
+                            <hr class="mt-1 mb-2">
+                            <ol class="ml-4" id="gameHistory">
+                                <li>Game 1</li>
+                                <li>Game 2</li>
+                                <li>Game 3</li>
+                                <li>Game 4</li>
+                            </ol>
+                            <hr class="mt-2">
+                        </div>
+                        <div class="is-flex is-fluid py-0">
+                            <button id="clearHistory" class="button is-rounded is-danger is-outlined mt-2">clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
     <section class="section"></section>
-    <section class="section has-background-white-ter" style="padding: 35px 24px 20px">
-        <div class="content has-text-centered">
+    <section class="section footer" style="padding: 35px 24px 20px">
+        <div class="content has-text-centered has-text-white">
             <p>
-                Squash Score Tracker by <strong>Pritish Dugar</strong>. Mini-project inspired by Colt Steele's
-                <strong>Web Developer Bootcamp 2021</strong>.
+                Squash Score Tracker by <b>Pritish Dugar</b>. Mini-project inspired by Colt Steele's
+                <b>Web Developer Bootcamp 2021</b>.
             </p>
             <p>
                 This mini-project primarily utilizes Bulma for styling.

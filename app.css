@@ -1,4 +1,10 @@
+html {
+    background-color: #BEE9E8;
+}
 
+.footer {
+    background-color: #1B4965;
+}
 
 /* media controls */
 @media (max-width: 425px) {

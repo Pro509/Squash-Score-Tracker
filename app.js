@@ -13,6 +13,7 @@ const player2 = {
 const changePlayers = document.querySelector('#changePlayers')
 const scoreSelector = document.querySelector('#toWin')
 const resetButton = document.querySelector('#reset');
+const clearHistButton = document.querySelector('#clearHistory')
 
 // overlay elements
 const overlay = document.querySelector('.modal')
@@ -80,6 +81,11 @@ function reset() {
     }
 }
 
+function clearHistory() {
+    const gameHistory = document.querySelector('#gameHistory');
+    gameHistory.innerHTML = '';
+}
+
 // Event Listeners
 changePlayers.addEventListener('click', openOverlay);
 
@@ -107,7 +113,9 @@ player2.button.addEventListener('dblclick', function(e){
     e.preventDefault();
 })
 
-resetButton.addEventListener('click', reset)
+resetButton.addEventListener('click', reset);
+
+clearHistButton.addEventListener('click', clearHistory);
 
 
 
