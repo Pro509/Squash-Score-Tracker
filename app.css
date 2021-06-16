@@ -1,0 +1,12 @@
+
+
+/* media controls */
+@media (max-width: 425px) {
+    .card-footer {
+        flex-direction: column;
+    }
+    .card-footer-item:nth-child(2) {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+}
