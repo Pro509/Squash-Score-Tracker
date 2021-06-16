@@ -17,7 +17,6 @@
         <div class="modal-background"></div>
         <div class="modal-content">
             <!-- Any other Bulma elements you want -->
-
             <form action="/page" class="form box">
                 <h1 class="is-size-5-touch is-size-4-tablet has-text-black has-text-centered">Enter Player Names</h1>
                 <br>
@@ -52,7 +51,6 @@
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
-    <section class="section"></section>
     <section class="section">
         <div class="container">
             <div class="columns">
@@ -117,19 +115,20 @@
             <div class="columns">
                 <div class="column is-half is-offset-one-quarter">
                     <div class="box is-half is-offset-one-quarter">
-                        <div class="content">
+                        <div class="content mb-0">
                             <H1 class="is-size-5">Game History</H1>
                             <hr class="mt-1 mb-2">
-                            <ol class="ml-4" id="gameHistory">
-                                <li>Game 1</li>
-                                <li>Game 2</li>
-                                <li>Game 3</li>
-                                <li>Game 4</li>
-                            </ol>
-                            <hr class="mt-2">
+                            <div class="content listBox">
+                                <p id="emptyListText" class="">Play matches to view history</p>
+                                <ol class="ml-4" id="gameHistory">
+                                    <!-- <li>Match Records</li> -->
+                                </ol>
+                            </div>
+                            <hr class="mb-0">
                         </div>
-                        <div class="is-flex is-fluid py-0">
-                            <button id="clearHistory" class="button is-rounded is-danger is-outlined mt-2">clear</button>
+                        <div class="is-flex is-fluid py-0 is-justify-content-space-between">
+                            <button id="clearHistory"
+                                class="button is-rounded is-danger is-outlined mt-2">clear</button>
                         </div>
                     </div>
                 </div>
