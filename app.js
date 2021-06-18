@@ -1,4 +1,4 @@
-const player1 = {
+let player1 = {
     name: 'Player 1',
     score: 0,
     wins: 0,
@@ -10,7 +10,7 @@ const player1 = {
     statsTableLost: document.querySelector('#p1Lost')
 }
 
-const player2 = {
+let player2 = {
     name: 'Player 2',
     score: 0,
     wins: 0,
@@ -22,13 +22,14 @@ const player2 = {
     statsTableLost: document.querySelector('#p2Lost')
 }
 
+// Main section elements
 let gameHistory = document.querySelector('#gameHistory');
 const changePlayers = document.querySelector('#changePlayers')
 const scoreSelector = document.querySelector('#toWin')
 const resetButton = document.querySelector('#reset');
 const clearHistButton = document.querySelector('#clearHistory')
 
-// overlay elements
+// overlay elements and listener
 const overlay = document.querySelector('.modal')
 const overlayClose = document.querySelector('.modal-close')
 const form = document.querySelector('.form')
@@ -53,11 +54,9 @@ form.addEventListener('submit', function (el) {
     if (player1Input !== '' && player2Input !== '') {
         player1.name = `${player1Input}`;
         player2.name = `${player2Input}`;
-        // button display name
-        player1.button.textContent = `+1 ${player1Input}`;
-        player2.button.textContent = `+1 ${player2Input}`;
-        // Stats table names
+        // Stats table and button to display new names
         for (let p of [player1, player2]){
+            p.button.textContent = `+1 ${p.name}`;
             p.statsTableName.textContent = p.name;
         }
         reset();
@@ -164,6 +163,4 @@ player2.button.addEventListener('dblclick', function (e) {
 resetButton.addEventListener('click', reset);
 
 clearHistButton.addEventListener('click', clearHistory);
-
-
 
