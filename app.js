@@ -4,7 +4,10 @@ const player1 = {
     wins: 0,
     loses: 0,
     button: document.querySelector('#p1Button'),
-    display: document.querySelector('#p1Display')
+    display: document.querySelector('#p1Display'),
+    statsTableName: document.querySelector('#p1NameStats'),
+    statsTableWon: document.querySelector('#p1Won'),
+    statsTableLost: document.querySelector('#p1Lost')
 }
 
 const player2 = {
@@ -13,7 +16,10 @@ const player2 = {
     wins: 0,
     loses: 0,
     button: document.querySelector('#p2Button'),
-    display: document.querySelector('#p2Display')
+    display: document.querySelector('#p2Display'),
+    statsTableName: document.querySelector('#p2NameStats'),
+    statsTableWon: document.querySelector('#p2Won'),
+    statsTableLost: document.querySelector('#p2Lost')
 }
 
 let gameHistory = document.querySelector('#gameHistory');
@@ -47,14 +53,23 @@ form.addEventListener('submit', function (el) {
     if (player1Input !== '' && player2Input !== '') {
         player1.name = `${player1Input}`;
         player2.name = `${player2Input}`;
+        // button display name
         player1.button.textContent = `+1 ${player1Input}`;
         player2.button.textContent = `+1 ${player2Input}`;
+        // Stats table names
+        for (let p of [player1, player2]){
+            p.statsTableName.textContent = p.name;
+        }
         reset();
         clearHistory();
         shutOverlay();
-    } else if (player1Input === '' && player2Input === '')  {
+    } else if (player1Input === '' && player2Input === '') {
+        // button display name 
         player1.button.textContent = '+1 Player One';
         player2.button.textContent = '+1 Player Two';
+        // Stats table names
+        player1.statsTableName.textContent = '+1 Player One';
+        player2.statsTableName.textContent = '+1 Player Two';
         reset()
         clearHistory();
         shutOverlay();
@@ -84,20 +99,21 @@ function updateScore(player, opponent) {
     }
 }
 
-function addHistory(winner, loser){
+function addHistory(winner, loser) {
     const record = document.createElement('li');
     // record.className = 'ml-3';
     record.textContent = `${winner.name} wins ${winner.score} to ${loser.score}`;
     winner.wins += 1;
     loser.loses += 1;
+    // Update player stats table
+    winner.statsTableWon.textContent = winner.wins;
+    loser.statsTableLost.textContent = loser.loses;
     gameHistory.appendChild(record);
 }
 
 function reset() {
     isGameOver = false;
     for (let p of [player1, player2]) {
-        p.wins = 0;
-        p.loses = 0;
         p.score = 0;
         p.display.textContent = p.score;
         p.display.classList.remove('has-text-success', 'has-text-danger');
@@ -109,6 +125,12 @@ function clearHistory() {
     const emptyListText = document.querySelector('#emptyListText')
     emptyListText.className = '';
     gameHistory.innerHTML = "";
+    for (let p of [player1, player2]) {
+        p.wins = 0;
+        p.loses = 0;
+        p.statsTableWon.textContent = p.wins;
+        p.statsTableLost.textContent = p.loses;
+    }
 }
 
 // Event Listeners
@@ -126,7 +148,7 @@ player1.button.addEventListener('click', function () {
 })
 
 // removes double click zoom
-player1.button.addEventListener('dblclick', function(e){
+player1.button.addEventListener('dblclick', function (e) {
     e.preventDefault();
 })
 
@@ -135,7 +157,7 @@ player2.button.addEventListener('click', function () {
 })
 
 // removes double click zoom
-player2.button.addEventListener('dblclick', function(e){
+player2.button.addEventListener('dblclick', function (e) {
     e.preventDefault();
 })
 
