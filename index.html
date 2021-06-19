@@ -68,7 +68,7 @@
                         </header>
                         <div class="card-content">
                             <div class="content">
-                                <div class="columns is-12">
+                                <div class="columns is-12" id="scoreDisplay">
                                     <div class="column is-7 is-three-fifths-desktop">
                                         <h1 class="title is-1" id="scoreCount"><span id="p1Display">0</span> to <span
                                                 id="p2Display">0</span>
@@ -76,8 +76,8 @@
                                         <p class="subtitle">Use the buttons below to keep score</p>
                                     </div>
                                     <div class="column is-1 is-hidden-tablet is-hidden-touch"></div>
-                                    <div class="column is-3">
-                                        <div class="container is-fullwidth-tablet">
+                                    <div class="column is-3" id="changePlayersCol">
+                                        <div class="container is-fullwidth-tablet is-flex" id="changePlayersContainer"> 
                                             <button id="changePlayers"
                                                 class="button is-rounded is-small-touch is-fullwidth-tablet">
                                                 change players

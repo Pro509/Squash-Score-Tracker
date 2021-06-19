@@ -16,3 +16,13 @@ body {
         margin-bottom: 20px;
     }
 }
+
+@media (min-width: 1215px) {
+    #changePlayersCol {
+        min-width: 300px;
+    }
+
+    #changePlayersContainer {
+        justify-content: center;
+    }
+}
