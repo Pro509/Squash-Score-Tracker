@@ -64,11 +64,11 @@ form.addEventListener('submit', function (el) {
         shutOverlay();
     } else if (player1Input === '' && player2Input === '') {
         // button display name 
-        player1.button.textContent = '+1 Player One';
-        player2.button.textContent = '+1 Player Two';
+        player1.button.textContent = player1.name;
+        player2.button.textContent = player2.name;
         // Stats table names
-        player1.statsTableName.textContent = '+1 Player One';
-        player2.statsTableName.textContent = '+1 Player Two';
+        player1.statsTableName.textContent = 'Player One';
+        player2.statsTableName.textContent = 'Player Two';
         reset()
         clearHistory();
         shutOverlay();
